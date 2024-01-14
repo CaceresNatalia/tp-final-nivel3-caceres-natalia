@@ -70,7 +70,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Detalle.aspx" />
     <Content Include="Error.aspx" />
-    <Content Include="formulaarioArticulo.aspx" />
+    <Content Include="formularioArticulo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="listaArticulos.aspx" />
     <Content Include="Web.config" />
@@ -97,12 +97,12 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="formulaarioArticulo.aspx.cs">
-      <DependentUpon>formulaarioArticulo.aspx</DependentUpon>
+    <Compile Include="formularioArticulo.aspx.cs">
+      <DependentUpon>formularioArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="formulaarioArticulo.aspx.designer.cs">
-      <DependentUpon>formulaarioArticulo.aspx</DependentUpon>
+    <Compile Include="formularioArticulo.aspx.designer.cs">
+      <DependentUpon>formularioArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
