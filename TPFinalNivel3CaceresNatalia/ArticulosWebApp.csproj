@@ -69,7 +69,10 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Detalle.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="formulaarioArticulo.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="listaArticulos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -87,8 +90,29 @@
     <Compile Include="Detalle.aspx.designer.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formulaarioArticulo.aspx.cs">
+      <DependentUpon>formulaarioArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formulaarioArticulo.aspx.designer.cs">
+      <DependentUpon>formulaarioArticulo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="listaArticulos.aspx.cs">
+      <DependentUpon>listaArticulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="listaArticulos.aspx.designer.cs">
+      <DependentUpon>listaArticulos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>

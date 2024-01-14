@@ -16,21 +16,38 @@ namespace TPFinalNivel3CaceresNatalia
 
             try
             {
-                string id = Request.QueryString["id"].ToString();
 
-                ArticuloNegocio negocio = new ArticuloNegocio();
-                Articulo seleccionado = (negocio.listar("id"))[0];
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if (!IsPostBack)
+                {
+                            
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    Articulo seleccionado = (negocio.listar(id))[0];
 
-                Session.Add("artSeleccionado", seleccionado);
+                    Session.Add("artSeleccionado", seleccionado);
 
+                    //txtId.Text = (seleccionado.Id).ToString();
+                    txtCodigo.Text = seleccionado.Codigo;
+                    txtCodigo.ReadOnly = true;
+                    txtMarca.Text = (seleccionado.Marca).ToString();
+                    txtMarca.ReadOnly = true;
+                    txtCategoria.Text = (seleccionado.Categoria).ToString();
+                    txtCategoria.ReadOnly = true;
+                    txtDescripcion.Text = seleccionado.Descripcion;
+                    txtDescripcion.ReadOnly = true;
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtNombre.ReadOnly = true;
+                    imgArticulo.ImageUrl = seleccionado.UrlImagen;
+                    txtPrecio.Text = (seleccionado.Precio).ToString();
 
-
+                }
 
             }
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
     }
