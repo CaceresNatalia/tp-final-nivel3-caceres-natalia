@@ -31,5 +31,11 @@ namespace TPFinalNivel3CaceresNatalia
             }
 
         }
+
+        protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvArticulos.SelectedDataKey.Value.ToString();
+            Response.Redirect("formularioArticulo.aspx?id=" + id);
+        }
     }
 }

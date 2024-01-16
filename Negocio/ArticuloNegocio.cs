@@ -200,6 +200,51 @@ namespace Negocio
             }
         }
 
+        public void modificar(Articulo art)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE Articulos SET Codigo = @codigo, Nombre = @nombre, Descripcion = @desc, idMarca = @idMarca, idCategoria = @idCategoria, Precio = @precio, ImagenUrl = @img Where Id = @id");
+                datos.setearParametro("@id", art.Id);
+                datos.setearParametro("@codigo", art.Codigo);
+                datos.setearParametro("@nombre", art.Nombre);
+                datos.setearParametro("@desc", art.Descripcion);
+                datos.setearParametro("@idMarca", art.Marca.Id);
+                datos.setearParametro("@idCategoria", art.Categoria.Id);
+                datos.setearParametro("@precio", art.Precio);
+                datos.setearParametro("@img", art.UrlImagen);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+
+                datos.setearConsulta("DELETE from Articulos where Id = @id");
+                datos.setearParametro("@id", id);
+                datos.ejecutarAccion(); 
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
 

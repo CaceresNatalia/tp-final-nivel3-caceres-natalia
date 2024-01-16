@@ -26,7 +26,6 @@ namespace TPFinalNivel3CaceresNatalia
 
                     Session.Add("artSeleccionado", seleccionado);
 
-                    //txtId.Text = (seleccionado.Id).ToString();
                     txtCodigo.Text = seleccionado.Codigo;
                     txtCodigo.ReadOnly = true;
                     txtMarca.Text = (seleccionado.Marca).ToString();
@@ -37,7 +36,8 @@ namespace TPFinalNivel3CaceresNatalia
                     txtDescripcion.ReadOnly = true;
                     txtNombre.Text = seleccionado.Nombre;
                     txtNombre.ReadOnly = true;
-                    imgArticulo.ImageUrl = seleccionado.UrlImagen;
+                    imgArticulo.ImageUrl = seleccionado.UrlImagen != null ? seleccionado.UrlImagen : "https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png";
+                    
                     txtPrecio.Text = (seleccionado.Precio).ToString();
 
                 }

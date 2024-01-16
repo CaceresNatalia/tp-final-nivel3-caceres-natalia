@@ -14,13 +14,13 @@
         </div>
         <div class="col align-self-end">
             <div class="dropdown mt-4 mb-4">
-                <asp:DropDownList  ID="ddlCategoria" runat="server" CssClass="form-select">
+                <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select">
                 </asp:DropDownList>
                 <%--<button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Seleccione Categoría
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">--%>
-               </div>
+            </div>
         </div>
 
         <div class="col align-self-start">
@@ -57,7 +57,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><%:art.Nombre %></h5>
                     <p class="card-text"><%:art.Descripcion%></p>
-                    <a href="Detalle.aspx?id=<%:art.Id%>">Ver detalle</a>
+                    <a target="_blank" href="Detalle.aspx?id=<%:art.Id%>">Ver detalle</a>
                 </div>
             </div>
         </div>
