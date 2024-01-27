@@ -6,12 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using dominio;
 using Negocio;
+using Helper;
 
 namespace TPFinalNivel3CaceresNatalia
 {
     public partial class formulaarioArticulo : System.Web.UI.Page
     {
         public bool confirmaEliminacion { get; set; }
+        public bool modificar { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
@@ -40,6 +42,7 @@ namespace TPFinalNivel3CaceresNatalia
                 string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
                 if (id != "" && !IsPostBack)
                 {
+                    modificar = true;
                     ArticuloNegocio negocio = new ArticuloNegocio();
                     Articulo seleccionado = (negocio.listar(id))[0];
 
@@ -52,7 +55,10 @@ namespace TPFinalNivel3CaceresNatalia
                     txtNombre.Text = seleccionado.Nombre;
                     txtDescripcion.Text = seleccionado.Descripcion;
                     txtPrecio.Text = seleccionado.Precio.ToString();
-                    txtImagenUrl.Text = seleccionado.UrlImagen;
+                    if(IsPostBack && Validaciones.IsImageValid(seleccionado.UrlImagen) && Validaciones.isImageAccesible(seleccionado.UrlImagen))
+                        txtImagenUrl.Text = seleccionado.UrlImagen;
+                    else
+                        txtImagenUrl.Text = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
                     txtImagenUrl_TextChanged(sender, e);
 
                 }
@@ -60,7 +66,6 @@ namespace TPFinalNivel3CaceresNatalia
             }
             catch (Exception ex)
             {
-                //txtImagenUrl.Text = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
                 Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx");
             }
@@ -83,15 +88,23 @@ namespace TPFinalNivel3CaceresNatalia
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
                 nuevo.Precio = decimal.Parse(txtPrecio.Text);
-                nuevo.UrlImagen = txtImagenUrl.Text;
+                if (Validaciones.IsImageValid(txtImagenUrl.Text) && Validaciones.isImageAccesible(txtImagenUrl.Text))
+                    nuevo.UrlImagen = txtImagenUrl.Text;
+                else
+                    nuevo.UrlImagen = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
+
 
                 if (Request.QueryString["id"] != null)
                 {
                     nuevo.Id = int.Parse(txtId.Text);
                     negocio.modificar(nuevo);
+                    
                 }
                 else
+                {
                     negocio.agregar(nuevo);
+                    
+                }
 
                 Response.Redirect("listaArticulos.aspx", false);
 
@@ -113,7 +126,7 @@ namespace TPFinalNivel3CaceresNatalia
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            confirmaEliminacion = true; 
+            confirmaEliminacion = true;
         }
 
         protected void btnConfirmaEliminacion_Click(object sender, EventArgs e)

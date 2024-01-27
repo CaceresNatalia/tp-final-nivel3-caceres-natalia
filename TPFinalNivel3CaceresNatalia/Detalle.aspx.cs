@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using dominio;
+using Helper;
 
 namespace TPFinalNivel3CaceresNatalia
 {
@@ -36,8 +37,12 @@ namespace TPFinalNivel3CaceresNatalia
                     txtDescripcion.ReadOnly = true;
                     txtNombre.Text = seleccionado.Nombre;
                     txtNombre.ReadOnly = true;
-                    imgArticulo.ImageUrl = seleccionado.UrlImagen != null ? seleccionado.UrlImagen : "https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png";
-                    
+                    if (Validaciones.IsImageValid(seleccionado.UrlImagen) && Validaciones.isImageAccesible(seleccionado.UrlImagen))
+                        imgArticulo.ImageUrl = seleccionado.UrlImagen;
+                    else
+                        imgArticulo.ImageUrl = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
+
+
                     txtPrecio.Text = (seleccionado.Precio).ToString();
 
                 }
@@ -50,5 +55,6 @@ namespace TPFinalNivel3CaceresNatalia
                 Response.Redirect("Error.aspx");
             }
         }
-    }
+
+        }
 }

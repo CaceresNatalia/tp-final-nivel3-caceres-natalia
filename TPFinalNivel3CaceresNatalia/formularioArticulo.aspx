@@ -36,24 +36,30 @@
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-info" OnClick="btnAceptar_Click" runat="server" />
                 <a href="listaArticulos.aspx" class="btn btn-outline-info">Cancelar</a>
             </div>
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-            <div class="mb-3">
-                <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />
-            </div>
-            <%if (confirmaEliminacion)
+            <%if (modificar)
                 {
             %>
-            <div class="mb-3">
-                <asp:CheckBox Text="Confirmar eliminación del registro" runat="server" ID="chkCofirmaEliminacion"/>
-                <asp:Button runat="server" ID="btnConfirmaEliminacion" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnConfirmaEliminacion_Click"/>
-            </div>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <div class="mb-3">
+                        <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />
+                    </div>
+                    <%if (confirmaEliminacion)
+                        {
+                    %>
+                    <div class="mb-3">
+                        <asp:CheckBox Text="Confirmar eliminación del registro" runat="server" ID="chkCofirmaEliminacion" />
+                        <asp:Button runat="server" ID="btnConfirmaEliminacion" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnConfirmaEliminacion_Click" />
+                    </div>
+                    <%
+                        }
+                    %>
+                    <div class="mb-3"></div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
             <%
                 }
             %>
-            <div class="mb-3"></div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
         </div>
         <div class="col-6">
             <div class="mb-3">

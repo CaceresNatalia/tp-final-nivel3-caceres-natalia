@@ -74,6 +74,7 @@ namespace Negocio
             {
                 string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca  = M.Id And A.IdCategoria = C.Id And ";
 
+                
                 if (campo == "Precio")
                 {
 
@@ -155,24 +156,65 @@ namespace Negocio
             return lista;
 
         }
-        //public List<Articulo> buscar(string marca, string categoria, string descripcion)
-        //{
-        //    List<Articulo> lista = new List<Articulo>();
-        //    AccesoDatos daatos = new AccesoDatos();
+        public List<Articulo> buscar(int idMarca, int idCat, string descripcion)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
 
-        //    try
-        //    {
-        //        string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca  = M.Id And A.IdCategoria = C.Id And ";
+            try
+            {
+                string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca  = M.Id And A.IdCategoria = C.Id And ";
+
+                if (idMarca != -1)
+                    consulta += " A.IdMarca =" + idMarca;
+                else if (idCat != -1)
+                    consulta += " A.IdCategoria = " + idCat;
+                else if (descripcion != "")
+                    consulta += " A.Descripcion like '%" + descripcion + "%'";
+                else
+                    consulta = null;
+                               
+ 
+
+                datos.setearConsulta(consulta);
+
+                if (consulta == null)
+                    return lista; 
+
+                datos.ejecutarLectura();
 
 
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
 
-        //        throw ex;
-        //    }
-        //}
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public void agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -236,7 +278,7 @@ namespace Negocio
 
                 datos.setearConsulta("DELETE from Articulos where Id = @id");
                 datos.setearParametro("@id", id);
-                datos.ejecutarAccion(); 
+                datos.ejecutarAccion();
 
             }
             catch (Exception ex)

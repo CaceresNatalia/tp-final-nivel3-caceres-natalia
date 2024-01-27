@@ -44,8 +44,10 @@
 
             <div class="col-5">
                 <div class="mb-3">
-                    <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
-                        ID="imgArticulo" CssClass="rounded mx-auto d-block" Width="60%" runat="server" />
+                    <asp:Image ImageUrl="" ID="imgArticulo" CssClass="rounded mx-auto d-block" Width="60%" runat="server" />
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-primary" href="Default.aspx">Volver</a>
                 </div>
             </div>
             <div class="col"></div>

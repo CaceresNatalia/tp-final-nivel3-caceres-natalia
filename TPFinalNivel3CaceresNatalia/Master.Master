@@ -27,10 +27,10 @@
     </div>
   </div>
 </nav>
-        <div>
+        <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
-                <div class="container">
+                <div>
                     <hr />
                 </div>
                              
