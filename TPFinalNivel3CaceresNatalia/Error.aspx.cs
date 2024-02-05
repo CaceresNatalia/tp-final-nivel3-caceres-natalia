@@ -13,5 +13,11 @@ namespace TPFinalNivel3CaceresNatalia
         {
             lblError.Text = Session["error"].ToString();
         }
+
+        protected void btnError_Click(object sender, EventArgs e)
+        {
+            if (lblError.Text == "Usuario o password incorrectos" || lblError.Text == "Debes completar ambos campos")
+                Response.Redirect("Login.aspx");
+        }
     }
 }

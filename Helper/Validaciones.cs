@@ -5,6 +5,8 @@ using System.Text;
 using System.Net;
 using System.Threading.Tasks;
 using dominio;
+using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Helper
 {
@@ -50,6 +52,20 @@ namespace Helper
 
                 return false;
             }
+        }
+
+        public static bool validaTextoVacio(object control)
+        {
+            if(control is TextBox texto)
+            {
+                if (string.IsNullOrEmpty(texto.Text))
+                    return true;
+                else
+                    return false;
+
+            }
+
+            return false;
         }
     }
 }

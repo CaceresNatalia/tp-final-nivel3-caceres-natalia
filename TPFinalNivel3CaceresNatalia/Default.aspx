@@ -56,6 +56,7 @@
             </div>
         </div>
     </div>
+
     <div class="col"></div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -76,16 +77,18 @@
                 <%  }
                     else
                     {
-                    %>
+                %>
                 <img src="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png" alt="..." class="card-img-top" />
                 <%} %>
                 <div class="card-body">
                     <h5 class="card-title"><%:art.Nombre %></h5>
                     <p class="card-text"><%:art.Descripcion%></p>
                     <a href="Detalle.aspx?id=<%:art.Id%>">Ver detalle</a>
+                    <%--                    <image class="rounded mx-auto d-block" src="<%:art.UrlImagen %>"></image>--%>
                 </div>
             </div>
         </div>
+
 
 
         <%
@@ -106,13 +109,14 @@
                 <%  }
                     else
                     {
-                    %>
+                %>
                 <img src="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png" alt="..." class="card-img-top" />
                 <%} %>
                 <div class="card-body">
                     <h5 class="card-title"><%:art.Nombre %></h5>
                     <p class="card-text"><%:art.Descripcion%></p>
                     <a href="Detalle.aspx?id=<%:art.Id%>">Ver detalle</a>
+                    <%--                <image class="rounded mx-auto d-block" src="<%:art.UrlImagen %>"></image>--%>
                 </div>
             </div>
         </div>
