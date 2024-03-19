@@ -55,8 +55,7 @@ namespace TPFinalNivel3CaceresNatalia
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex.ToString());
-                Response.Redirect("Error.aspx");
+                Validaciones.catchEx(ex, HttpContext.Current);
             }
 
         }
@@ -83,8 +82,7 @@ namespace TPFinalNivel3CaceresNatalia
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex.ToString());
-                Response.Redirect("Error.aspx", false);
+                Validaciones.catchEx(ex, HttpContext.Current);
             }
 
 
@@ -111,61 +109,5 @@ namespace TPFinalNivel3CaceresNatalia
             ddlCategoria.Items.Clear();
             ddlMarca.Items.Clear();
         }
-
-        protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //protected void btnDetalleModal_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-
-        //        string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-        //        if (!IsPostBack)
-        //        {
-
-        //            ArticuloNegocio negocio = new ArticuloNegocio();
-        //            Articulo seleccionado = (negocio.listar(id))[0];
-
-        //            Session.Add("artSeleccionado", seleccionado);
-
-        //            lblCodigoModal.Text = seleccionado.Codigo;
-        //            lblCodigoModal.Enabled = false;
-        //            lblMarcaModal.Text = (seleccionado.Marca).ToString();
-        //            lblMarcaModal.Enabled = false;
-        //            lblCategoriaModal.Text = (seleccionado.Categoria).ToString();
-        //            lblCategoriaModal.Enabled = false;
-        //            lblDescripcionModal.Text = seleccionado.Descripcion;
-        //            lblDescripcionModal.Enabled = false;
-        //            lblNombreModal.Text = seleccionado.Nombre;
-        //            //lblNombre. = true;
-        //            //if (Validaciones.IsImageValid(seleccionado.UrlImagen) && Validaciones.isImageAccesible(seleccionado.UrlImagen))
-        //            //    imgArticulo.ImageUrl = seleccionado.UrlImagen;
-        //            //else
-        //            //    imgArticulo.ImageUrl = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
-
-
-        //            lblPrecioModal.Text = (seleccionado.Precio).ToString();
-
-        //            // Muestra el modal
-        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "myModal", "$('#productoModal').modal();", true);
-
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Session.Add("error", ex);
-        //        Response.Redirect("Error.aspx");
-        //    }
-        //}
     }
 }

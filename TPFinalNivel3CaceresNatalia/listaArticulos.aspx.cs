@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using dominio;
+using Helper;
 
 namespace TPFinalNivel3CaceresNatalia
 {
@@ -26,8 +27,7 @@ namespace TPFinalNivel3CaceresNatalia
                 catch (Exception ex)
                 {
 
-                    Session.Add("Error", ex.ToString());
-                    Response.Redirect("Error.aspx");
+                    Validaciones.catchEx(ex, HttpContext.Current);
                 }
             }
 
@@ -88,8 +88,7 @@ namespace TPFinalNivel3CaceresNatalia
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex.ToString());
-                Response.Redirect("Error.aspx");
+                Validaciones.catchEx(ex, HttpContext.Current);
             }
 
         }

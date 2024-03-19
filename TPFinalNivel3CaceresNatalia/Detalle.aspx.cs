@@ -12,6 +12,7 @@ namespace TPFinalNivel3CaceresNatalia
 {
     public partial class Detalle : System.Web.UI.Page
     {
+        FavoritoNegocio negocio = new FavoritoNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -44,6 +45,7 @@ namespace TPFinalNivel3CaceresNatalia
 
 
                     txtPrecio.Text = (seleccionado.Precio).ToString();
+                    txtPrecio.ReadOnly = true;
 
                 }
 
@@ -56,5 +58,17 @@ namespace TPFinalNivel3CaceresNatalia
             }
         }
 
+        protected void btnFavoritos_Click(object sender, EventArgs e)
+        {
+            //Favorito favorito = new Favorito();
+
+            int artId = int.Parse(Request.QueryString["id"]);
+            Usuario user = (Usuario)Session["usuario"];
+            int userId = user.Id;
+            
+            
+            negocio.agregarFavorito(artId, userId);
+            
         }
+    }
 }

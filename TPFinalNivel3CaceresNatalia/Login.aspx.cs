@@ -24,7 +24,7 @@ namespace TPFinalNivel3CaceresNatalia
 
             try
             {
-                if (!Validaciones.validaTextoVacio(txtEmail.Text) || !Validaciones.validaTextoVacio(txtPassword.Text))
+                if (Validaciones.validaTextoVacio(txtEmail.Text) || Validaciones.validaTextoVacio(txtPassword.Text))
                 {
                     Session.Add("Error", "Debes completar ambos campos");
                     Response.Redirect("Error.aspx", false);
@@ -50,8 +50,7 @@ namespace TPFinalNivel3CaceresNatalia
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex.ToString());
-                Response.Redirect("Error.aspx");
+                Validaciones.catchEx(ex, HttpContext.Current);
             }
 
         }

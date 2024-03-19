@@ -20,7 +20,8 @@
                 <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server" />
             </div>
             <div class="mb-3">
-                <asp:Button Text="Guardar" ID="btnGuardar" CssClass="btn btn-outline-light me-2" runat="server" />
+                <asp:Button Text="Guardar" ID="btnGuardar" CssClass="btn btn-outline-light me-2" 
+                    OnClick="btnGuardar_Click" runat="server" />
                 <a href="/">Regresar</a>
             </div>
         </div>

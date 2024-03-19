@@ -13,8 +13,7 @@
                     <ContentTemplate>
                         <asp:Button Text="Seleccionar Marca" ID="btnSeleccionarMarca" OnClick="btnSeleccionarMarca_Click" CssClass="btn btn-outline-primary mb-4" runat="server" />
                         <asp:DropDownList ID="ddlMarca" CssClass="form-select" runat="server"
-                            AutoPostBack="true"
-                            OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged">
+                            AutoPostBack="true">
                         </asp:DropDownList>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -27,8 +26,7 @@
                         <asp:Button Text="Seleccionar Categoría" ID="btnSeleccionarCat"
                             CssClass="btn btn-outline-primary mb-4" OnClick="btnSeleccionarCat_Click" runat="server" />
                         <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select"
-                            AutoPostBack="true"
-                            OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged">
+                            AutoPostBack="true">
                         </asp:DropDownList>
                 </ContentTemplate>
             </asp:UpdatePanel>
@@ -84,7 +82,6 @@
                     <h5 class="card-title"><%:art.Nombre %></h5>
                     <p class="card-text"><%:art.Descripcion%></p>
                     <a href="Detalle.aspx?id=<%:art.Id%>">Ver detalle</a>
-                    <%--                    <image class="rounded mx-auto d-block" src="<%:art.UrlImagen %>"></image>--%>
                 </div>
             </div>
         </div>
@@ -116,7 +113,6 @@
                     <h5 class="card-title"><%:art.Nombre %></h5>
                     <p class="card-text"><%:art.Descripcion%></p>
                     <a href="Detalle.aspx?id=<%:art.Id%>">Ver detalle</a>
-                    <%--                <image class="rounded mx-auto d-block" src="<%:art.UrlImagen %>"></image>--%>
                 </div>
             </div>
         </div>

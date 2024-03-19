@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="TPFinalNivel3CaceresNatalia.Detalle" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="TPFinalNivel3CaceresNatalia.Detalle" EnableEventValidation="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -12,7 +12,13 @@
         </div>
         <div class="row">
 
-
+            <div class="text-center">
+                <a class="btn btn-primary" href="Default.aspx">Volver</a>
+                <%if (Helper.Seguridad.sesionActiva(Session["usuario"])) { %>
+                <asp:Button Text="⭐" ID="btnFavoritos" title="Agregar a Favoritos"
+                    OnClick="btnFavoritos_Click" CssClass="btn btn-primary ms-3" runat="server" />
+                <% }%>
+            </div>
 
             <div class="col"></div>
             <div class="col-5">
@@ -41,13 +47,9 @@
                     <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
                 </div>
             </div>
-
             <div class="col-5">
                 <div class="mb-3">
                     <asp:Image ImageUrl="" ID="imgArticulo" CssClass="rounded mx-auto d-block" Width="60%" runat="server" />
-                </div>
-                <div class="text-center">
-                    <a class="btn btn-primary" href="Default.aspx">Volver</a>
                 </div>
             </div>
             <div class="col"></div>

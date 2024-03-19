@@ -26,20 +26,26 @@
                     </div>
                 </div>
                 <div class="d-flex">
+                    <%if (!Helper.Seguridad.sesionActiva(Session["usuario"]))
+                        { %>
                     <a href="Login.aspx" class="btn btn-success me-2">Login</a>
-                    <a href="Registro.aspx" class="btn btn-outline-primary m-auto">Registrarse</a>
+                    <a href="Registro.aspx" class="btn btn-outline-primary m-auto me-3">Registrarse</a>
+                    <%}
+                        else
+                        { %>
+                    <asp:Button Text="Salir" ID="btnSalir" CssClass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" />
+                    <asp:Label ID="lblUser" Text="" CssClass="text-light m-auto me-2" runat="server" />
+                    <%} %>
+                    <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%;" runat="server" />
                 </div>
             </div>
         </nav>
         <div class="container">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
-                <div>
-                    <hr />
-                </div>
-
-
-            </asp:ContentPlaceHolder>
+            <hr />
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>

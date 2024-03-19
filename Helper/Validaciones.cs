@@ -8,6 +8,7 @@ using dominio;
 using System.Web;
 using System.Web.UI.WebControls;
 
+
 namespace Helper
 {
     public class Validaciones
@@ -66,6 +67,12 @@ namespace Helper
             }
 
             return false;
+        }
+
+        public static void catchEx(Exception ex, HttpContext context)
+        {
+            context.Session["Error"] = ex.ToString();
+            context.Response.Redirect("Error.aspx");
         }
     }
 }
